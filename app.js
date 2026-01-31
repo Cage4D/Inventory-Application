@@ -6,7 +6,10 @@ const indexRouter = require("./routes/indexRouter")
 const genreRouter = require("./routes/genreRouter")
 const platformRouter = require("./routes/platformRouter")
 const publisherRouter = require("./routes/publisherRouter")
+const gameRouter = require("./routes/gameRouter")
 const assetsPath = path.join(__dirname, "public")
+
+app.use(express.static(assetsPath))
 
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "ejs")
@@ -16,6 +19,7 @@ app.use("/", indexRouter)
 app.use("/genre", genreRouter)
 app.use("/platform", platformRouter)
 app.use("/publisher", publisherRouter)
+app.use("/games", gameRouter)
 
 app.listen(PORT, (error) => {
     if (error) throw error;
