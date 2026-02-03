@@ -1,4 +1,21 @@
 {
+  "name": "inventory-application",
+  "version": "1.0.0",
+  "description": "an Inventory application",
+  "homepage": "https://github.com/Cage4D/Inventory-Application#readme",
+  "bugs": {
+    "url": "https://github.com/Cage4D/Inventory-Application/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cage4D/Inventory-Application.git"
+  },
+  "license": "ISC",
+  "author": "Cage4D",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node --watch app.js"
+  },
   "dependencies": {
     "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
