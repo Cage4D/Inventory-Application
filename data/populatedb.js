@@ -20,7 +20,7 @@ const SQL = `
     CREATE TABLE IF NOT EXISTS games (
         id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
         name TEXT NOT NULL,
-        publisher_id INTEGER REFERENCES publishers(id)
+        publisher_id INTEGER REFERENCES publishers(id),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
 
@@ -47,7 +47,7 @@ const SQL = `
     ('Simulation')
     RETURNING *;
 
-    INSERT INTO platform (name) VALUES
+    INSERT INTO platforms (name) VALUES
     ('PC'),
     ('PlayStation'),
     ('Xbox'),
