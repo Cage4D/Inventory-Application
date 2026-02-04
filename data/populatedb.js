@@ -121,6 +121,87 @@ const seedGamesSQL = `
         RETURNING *;
 `;
 
+const seedGameGenresSQL = `
+    INSERT INTO game_genres (game_id, genre_id) VALUES
+    (
+        (SELECT id FROM games WHERE name = 'Elden Ring'),
+        (SELECT id FROM genres WHERE name = 'Action')
+    ),
+    (
+        (SELECT id FROM games WHERE name = 'Elden Ring'),
+        (SELECT id FROM genres WHERE name = 'RPG')
+    ), 
+    (
+        (SELECT id FROM games WHERE name = 'Red Dead Redemption 2'),
+        (SELECT id FROM genres WHERE name = 'Action')
+    ),
+    (
+        (SELECT id FROM games WHERE name = 'Red Dead Redemption 2'),
+        (SELECT id FROM genres WHERE name = 'Adventure')
+    ),
+    (
+        (SELECT id FROM games WHERE name = 'FIFA 24'),
+        (SELECT id FROM genres WHERE name = 'Sports')
+    ),
+    (
+        (SELECT id FROM games WHERE name = 'FIFA 24'),
+        (SELECT id FROM genres WHERE name = 'Simulation')
+    ),
+    (
+        (SELECT id FROM games WHERE name = 'Black Myth Wukong'),
+        (SELECT id FROM genres WHERE name = 'Action')
+    ),
+    (
+        (SELECT id FROM games WHERE name = 'Black Myth Wukong'),
+        (SELECT id FROM genres WHERE name = 'RPG')
+    ),
+    (
+        (SELECT id FROM games WHERE name = 'Grand Theft Auto V'),
+        (SELECT id FROM genres WHERE name = 'Action')
+    ),
+    (
+        (SELECT id FROM games WHERE name = 'Grand Theft Auto V'),
+        (SELECT id FROM genres WHERE name = 'Adventure')
+    ),
+    (
+        (SELECT id FROM games WHERE name = 'Sekiro: Shadows Die Twice'),
+        (SELECT id FROM genres WHERE name = 'Action')
+    ),
+    (
+        (SELECT id FROM games WHERE name = 'Sekiro: Shadows Die Twice'),
+        (SELECT id FROM genres WHERE name = 'RPG')
+    ),
+    (
+        (SELECT id FROM games WHERE name = 'Madden NFL 24'),
+        (SELECT id FROM genres WHERE name = 'Sports')
+    ),
+    (
+        (SELECT id FROM games WHERE name = 'Hogwarts Legacy'),
+        (SELECT id FROM genres WHERE name = 'RPG')
+    ),
+    (
+        (SELECT id FROM games WHERE name = 'Hogwarts Legacy'),
+        (SELECT id FROM genres WHERE name = 'Adventure')
+    ),
+    (
+        (SELECT id FROM games WHERE name = 'Cyberpunk 2077'),
+        (SELECT id FROM genres WHERE name = 'Action')
+    ),
+    (
+        (SELECT id FROM games WHERE name = 'Cyberpunk 2077'),
+        (SELECT id FROM genres WHERE name = 'RPG')
+    ),
+    (
+        (SELECT id FROM games WHERE name = 'Stardew Valley'),
+        (SELECT id FROM genres WHERE name = 'Simulation')
+    ),
+    (
+        (SELECT id FROM games WHERE name = 'Stardew Valley'),
+        (SELECT id FROM genres WHERE name = 'Indie')
+    )
+    ON CONFLICT DO NOTHING
+`
+
 async function main() {
   console.log("seeding....");
   const client = new Client({
@@ -133,6 +214,7 @@ async function main() {
     await client.query(seedPublishersSQL);
     await client.query(seedPlatformsSQL);
     await client.query(seedGamesSQL);
+    await client.query(seedGameGenresSQL)
   } catch (err) {
     console.error("Seeding failed", err);
   } finally {
