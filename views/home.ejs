@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title></title>
+        <title>Home</title>
         <link rel="stylesheet" href="/styles.css">
     </head>
     <body>
@@ -12,7 +12,13 @@
                 <a href="/platform" class="panel-section">platforms</a>
                 <a href="/games" class="panel-section">game</a>
             </div>
-            <div class="main-content"></div>
+            <div class="main-content">
+                <ul style="color: white;">
+                    <% data.forEach(game => { %>
+                        <li><%= game.name %> (ID: <%= game.id%>) (Genre(s): <%= game.genres.length ? game.genres.join(", ") : "No Genres" %>)</li>
+                    <% }) %>
+                </ul>
+            </div>
         </div>
     </body>
 </html>
