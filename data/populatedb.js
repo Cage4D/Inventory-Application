@@ -56,7 +56,10 @@ const seedPublishersSQL = `
     ('FromSoftware'),
     ('Rockstar Games'),
     ('EA Sports'),
-    ('Game Science')
+    ('Game Science'),
+    ('Warner Bros'),
+    ('CD Projekt'),
+    ('ConcernedApe')
     ON CONFLICT DO NOTHING
     RETURNING *;
 `;
@@ -89,6 +92,30 @@ const seedGamesSQL = `
         (
             'Black Myth Wukong',
             (SELECT id from publishers WHERE name = 'Game Science')
+        ),
+        (
+            'Grand Theft Auto V',
+            (SELECT id FROM publishers WHERE name = 'Rockstar Games')
+        ),
+        (
+            'Sekiro: Shadows Die Twice',
+            (SELECT id FROM publishers WHERE name = 'FromSoftware')
+        ), 
+        (
+            'Madden NFL 24',
+            (SELECT id FROM publishers WHERE name = 'EA Sports')
+        ),
+        (
+            'Hogwarts Legacy',
+            (SELECT id FROM publishers WHERE name = 'Warner Bros')
+        ),
+        (
+            'Cyberpunk 2077',
+            (SELECT id FROM publishers WHERE name = 'CD Projekt')
+        ),
+        (
+            'Stardew Valley',
+            (SELECT id FROM publishers WHERE name = 'ConcernedApe')
         )
         ON CONFLICT DO NOTHING
         RETURNING *;
