@@ -59,7 +59,7 @@ const SQL = `
     ('FromSoftware'),
     ('Rockstar Games'),
     ('EA Sports'),
-    ('Game Science'),
+    ('Game Science')
     RETURNING *;
 
     INSERT INTO games (name, publisher_id) VALUES
