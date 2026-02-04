@@ -2,7 +2,7 @@ const queries = require("../data/queries");
 
 exports.indexRouteGet = async (req, res) => {
   try {
-    const allGames = await queries.getGames();
+    const allGames = await queries.getGamesWithPublishers();
     res.render("home", { data: allGames });
   } catch (err) {
     console.error("Failed to fetch games", err)
