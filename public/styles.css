@@ -192,9 +192,25 @@ a {
 
 .games-table th,
 .games-table td {
-	border: 1px solid #444;
 	padding: 8px;
 	text-align: left;
+}
+
+.games-table th:not(:last-child),
+.games-table tr:not(:last-child) {
+	border-right: 1px solid #444;;
+}
+
+.games-table thead tr {
+	border-bottom: 1px solid #444;;
+}
+
+.games-table tbody td:not(:last-child) {
+	border-right: 1px solid #444;
+}
+
+.games-table tbody tr:not(:last-child) {
+	border-bottom: 1px solid #444;
 }
 
 .games-table th {
