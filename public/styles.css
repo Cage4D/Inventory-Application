@@ -186,7 +186,6 @@ a {
 
 .games-table {
 	width: 100%;
-	border-collapse: collapse;
 	color: white;
 }
 
@@ -196,27 +195,14 @@ a {
 	text-align: left;
 }
 
-.games-table th:not(:last-child),
-.games-table tr:not(:last-child) {
-	border-right: 1px solid #444;;
-}
-
-.games-table thead tr {
-	border-bottom: 1px solid #444;;
-}
-
-.games-table tbody td:not(:last-child) {
-	border-right: 1px solid #444;
-}
-
-.games-table tbody tr:not(:last-child) {
-	border-bottom: 1px solid #444;
-}
-
 .games-table th {
 	background-color: #222;
 }
 
 .games-table tr:nth-child(2n) {
 	background-color: #333;
+}
+
+.main-content {
+	padding: 1rem;
 }
