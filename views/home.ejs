@@ -13,11 +13,24 @@
                 <a href="/games" class="panel-section">game</a>
             </div>
             <div class="main-content">
-                <ul style="color: white;">
-                    <% data.forEach(game => { %>
-                        <li><%= game.name %> (ID: <%= game.id%>) (Genre(s): <%= game.genres.length ? game.genres.join(", ") : "No Genres" %>)</li>
-                    <% }) %>
-                </ul>
+                <table class="games-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Genres</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% data.forEach(game => { %>
+                            <tr>
+                                <td><%= game.id %></td>
+                                <td><%= game.name %></td>
+                                <td><%= game.genres.length ? game.genres.join(", ") : "None" %></td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
             </div>
         </div>
     </body>
