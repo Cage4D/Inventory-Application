@@ -3,9 +3,9 @@ const pool = require("./pool")
 async function getGamesWithPublishers() {
     const { rows } = await pool.query(`
     SELECT games.id, 
-    games.name,
-    publishers.name AS publisher,
-    ARRAY_AGG(genres.name) FILTER (WHERE genres.name IS NOT NULL) AS genres 
+        games.name,
+        publishers.name AS publisher,
+        ARRAY_AGG(genres.name) FILTER (WHERE genres.name IS NOT NULL) AS genres 
     FROM games
     JOIN publishers ON games.publisher_id = publishers.id
     LEFT JOIN game_genres ON games.id = game_genres.game_id     
@@ -18,9 +18,9 @@ async function getGamesWithPublishers() {
 async function getGenres() {
     const { rows } = await pool.query(`
     SELECT 
-    genres.id,
-    genres.name AS genre,
-    ARRAY_AGG(games.name ORDER BY games.name) AS games
+        genres.id,
+        genres.name AS genre,
+        ARRAY_AGG(games.name ORDER BY games.name) AS games
     FROM genres
     JOIN game_genres ON genres.id = game_genres.genre_id
     JOIN games ON game_genres.game_id = games.id
@@ -31,7 +31,17 @@ async function getGenres() {
 }
 
 async function getPublishers() {
-    const { rows } = await pool.query("SELECT * FROM publishers")
+    const { rows } = await pool.query(`
+        SELECT
+            publishers.id,
+            publishers.name as publisher,
+            ARRAY_AGG(games.name ORDER BY games.name) AS games
+        FROM publishers
+        JOIN games ON games.publisher_id = publishers.id
+        GROUP BY publishers.id, publishers.name
+        HAVING COUNT(games.id) > 0
+        ORDER BY publishers.name;
+    `)
     return rows;
 }
 

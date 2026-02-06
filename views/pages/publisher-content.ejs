@@ -1,0 +1,8 @@
+<% data.forEach(publisher => {%>
+    <ul class="publisher-list">
+        <p><%= publisher.publisher%></p>
+        <% publisher.games.forEach(game => {%>
+            <li><%= game %></li>
+        <%})%>
+    </ul>
+<%})%>
