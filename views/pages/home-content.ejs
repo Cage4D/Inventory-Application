@@ -1,0 +1,18 @@
+<table class="games-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Genres</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% data.forEach(game => { %>
+            <tr>
+                <td><%= game.id %></td>
+                <td><%= game.name %></td>
+                <td><%= game.genres.length ? game.genres.join(", ") : "None" %></td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
