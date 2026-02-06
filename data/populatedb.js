@@ -200,7 +200,30 @@ const seedGameGenresSQL = `
         (SELECT id FROM genres WHERE name = 'Indie')
     )
     ON CONFLICT DO NOTHING
-`
+`;
+
+const seedGamePlatformsSQL = `
+INSERT INTO game_platforms (game_id, platform_id) VALUES
+  ((SELECT id FROM games WHERE name = 'Elden Ring'), (SELECT id FROM platforms WHERE name = 'PC')),
+  ((SELECT id FROM games WHERE name = 'Elden Ring'), (SELECT id FROM platforms WHERE name = 'PlayStation')),
+  ((SELECT id FROM games WHERE name = 'Red Dead Redemption 2'), (SELECT id FROM platforms WHERE name = 'PC')),
+  ((SELECT id FROM games WHERE name = 'Red Dead Redemption 2'), (SELECT id FROM platforms WHERE name = 'PlayStation')),
+  ((SELECT id FROM games WHERE name = 'FIFA 24'), (SELECT id FROM platforms WHERE name = 'PC')),
+  ((SELECT id FROM games WHERE name = 'FIFA 24'), (SELECT id FROM platforms WHERE name = 'PlayStation')),
+  ((SELECT id FROM games WHERE name = 'Black Myth Wukong'), (SELECT id FROM platforms WHERE name = 'PC')),
+  ((SELECT id FROM games WHERE name = 'Grand Theft Auto V'), (SELECT id FROM platforms WHERE name = 'PC')),
+  ((SELECT id FROM games WHERE name = 'Grand Theft Auto V'), (SELECT id FROM platforms WHERE name = 'PlayStation')),
+  ((SELECT id FROM games WHERE name = 'Sekiro: Shadows Die Twice'), (SELECT id FROM platforms WHERE name = 'PC')),
+  ((SELECT id FROM games WHERE name = 'Sekiro: Shadows Die Twice'), (SELECT id FROM platforms WHERE name = 'PlayStation')),
+  ((SELECT id FROM games WHERE name = 'Madden NFL 24'), (SELECT id FROM platforms WHERE name = 'PC')),
+  ((SELECT id FROM games WHERE name = 'Hogwarts Legacy'), (SELECT id FROM platforms WHERE name = 'PC')),
+  ((SELECT id FROM games WHERE name = 'Hogwarts Legacy'), (SELECT id FROM platforms WHERE name = 'PlayStation')),
+  ((SELECT id FROM games WHERE name = 'Cyberpunk 2077'), (SELECT id FROM platforms WHERE name = 'PC')),
+  ((SELECT id FROM games WHERE name = 'Cyberpunk 2077'), (SELECT id FROM platforms WHERE name = 'PlayStation')),
+  ((SELECT id FROM games WHERE name = 'Stardew Valley'), (SELECT id FROM platforms WHERE name = 'PC')),
+  ((SELECT id FROM games WHERE name = 'Stardew Valley'), (SELECT id FROM platforms WHERE name = 'Nintendo Switch'))
+ON CONFLICT DO NOTHING;
+`;
 
 async function main() {
   console.log("seeding....");
@@ -214,7 +237,8 @@ async function main() {
     await client.query(seedPublishersSQL);
     await client.query(seedPlatformsSQL);
     await client.query(seedGamesSQL);
-    await client.query(seedGameGenresSQL)
+    await client.query(seedGameGenresSQL);
+    await client.query(seedGamePlatformsSQL);
   } catch (err) {
     console.error("Seeding failed", err);
   } finally {
