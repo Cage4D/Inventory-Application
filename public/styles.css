@@ -210,7 +210,8 @@ a {
 }
 
 .genre-list,
-.publisher-list {
+.publisher-list,
+.platform-list {
 	list-style-type: none;
 	padding-left: 0;
 	color: #fff;
@@ -218,7 +219,7 @@ a {
 }
 
 .genre-list li,
-.publisher-list {
+.publisher-list li {
 	position: relative;
 	padding-left: 1.8em;
 }

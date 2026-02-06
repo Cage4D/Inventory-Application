@@ -1,0 +1,8 @@
+<% data.forEach(platform => {%>
+    <ul class="platform-list">
+        <p><%= platform.platform%></p>
+        <% platform.games.forEach(game => {%>
+            <li><%= game %></li>
+        <%})%>
+    </ul>
+<%})%>

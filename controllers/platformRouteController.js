@@ -1,3 +1,6 @@
-exports.platformRouteGet = (req, res) => {
-    res.render("platform", {})
+const queries = require("../data/queries")
+
+exports.platformRouteGet = async (req, res) => {
+    const getPlatforms = await queries.getPlatforms()
+    res.render("pages/platform-content", { data: getPlatforms })
 }
