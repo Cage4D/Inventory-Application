@@ -1,0 +1,32 @@
+<form action="/games/addGame" method="POST" class="new-game">
+    <label>
+        Name:
+        <input type="text" name="name">
+    </label>
+
+    <fieldset>
+        <legend>Genres</legend>
+        <label><input type="checkbox" name="genres" value="Action"> Action</label>
+        <label><input type="checkbox" name="genres" value="Adventure"> Adventure</label>
+        <label><input type="checkbox" name="genres" value="RPG"> RPG</label>
+        <label><input type="checkbox" name="genres" value="Simulation"> Simulation</label>
+        <label><input type="checkbox" name="genres" value="Sports"> Sports</label>
+        <label><input type="checkbox" name="genres" value="Indie"> Indie</label>
+    </fieldset>
+
+    <label>
+        Publisher:
+        <input type="text" name="publisher">
+    </label>
+
+    <fieldset>
+        <legend>Platforms</legend>
+        <label><input type="checkbox" name="platforms" value="Mobile"> Mobile</label>
+        <label><input type="checkbox" name="platforms" value="PC"> PC</label>
+        <label><input type="checkbox" name="platforms" value="PlayStation"> PlayStation</label>
+        <label><input type="checkbox" name="platforms" value="Nintendo Switch"> Nintendo Switch</label>
+        <label><input type="checkbox" name="platforms" value="Xbox"> Xbox</label>
+    </fieldset>
+
+    <button type="submit">Add Game</button>
+</form>
