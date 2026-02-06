@@ -207,13 +207,16 @@ a {
 	padding: 1rem;
 }
 
-.genre-list {
+.genre-list,
+.publisher-list {
 	list-style-type: none;
 	padding-left: 0;
 	color: #fff;
+	margin-bottom: 2rem;
 }
 
-.genre-list li {
+.genre-list li,
+.publisher-list {
 	position: relative;
 	padding-left: 1.8em;
 }
@@ -222,4 +225,14 @@ a {
 	content: "⚡";
 	position: absolute;
 	left: 0;
+}
+
+.publisher-list li::before {
+	content: ":)";
+	position: absolute;
+	left: 0;
+}
+
+.publisher-list > p {
+	text-transform: uppercase;
 }
