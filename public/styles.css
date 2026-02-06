@@ -246,3 +246,33 @@ a {
 .publisher-list > p {
 	text-transform: uppercase;
 }
+
+.new-game {
+	color: white;
+	display: grid;
+	gap: 1rem;
+}
+
+.new-game input {
+	background: none;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	color: #fff;
+	padding: 1px;
+}
+
+.new-game button {
+	width: 30%;
+	justify-self: center;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+}
+
+.new-game button:hover {
+	background-color: #ffffff80;
+}
+
+.new-game fieldset {
+	border-radius: 5px;
+}
