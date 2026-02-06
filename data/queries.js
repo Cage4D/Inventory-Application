@@ -34,7 +34,7 @@ async function getPublishers() {
     const { rows } = await pool.query(`
         SELECT
             publishers.id,
-            publishers.name as publisher,
+            publishers.name AS publisher,
             ARRAY_AGG(games.name ORDER BY games.name) AS games
         FROM publishers
         JOIN games ON games.publisher_id = publishers.id
@@ -46,7 +46,18 @@ async function getPublishers() {
 }
 
 async function getPlatforms() {
-    const { rows } = await pool.query("SELECT * from platforms")
+    const { rows } = await pool.query(`
+    SELECT 
+        platforms.id,
+        platforms.name AS platform,
+        ARRAY_AGG(games.name ORDER BY games.name) AS games
+    FROM platforms
+    JOIN game_platforms ON platforms.id = game_platforms.platform_id
+    JOIN games ON game_platforms.game_id = games.id
+    GROUP BY platforms.id, platforms.name
+    HAVING COUNT(games.id) > 0
+    ORDER BY platforms.name
+    `)
     return rows;
 }
 
