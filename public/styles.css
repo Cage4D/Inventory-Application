@@ -219,7 +219,8 @@ a {
 }
 
 .genre-list li,
-.publisher-list li {
+.publisher-list li,
+.platform-list li {
 	position: relative;
 	padding-left: 1.8em;
 }
@@ -232,6 +233,12 @@ a {
 
 .publisher-list li::before {
 	content: ":)";
+	position: absolute;
+	left: 0;
+}
+
+.platform-list li::before {
+	content: "🚀";
 	position: absolute;
 	left: 0;
 }
