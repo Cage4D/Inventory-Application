@@ -18,6 +18,7 @@ app.use(expressLayouts)
 app.set("layout", "partials/layout")
 
 app.use(express.static(assetsPath))
+app.use(express.urlencoded({ extended: true }))
 app.use("/", indexRouter)
 app.use("/genre", genreRouter)
 app.use("/platform", platformRouter)
