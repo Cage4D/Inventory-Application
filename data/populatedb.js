@@ -228,7 +228,7 @@ ON CONFLICT DO NOTHING;
 async function main() {
   console.log("seeding....");
   const client = new Client({
-    connectionString: process.env.CONNECTION_STRING,
+    connectionString: process.env.DATABASE_URL,
   });
   try {
     await client.connect();
